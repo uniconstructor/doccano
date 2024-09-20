@@ -14,7 +14,6 @@ docker container create --name doccano \
   -e "ADMIN_EMAIL=admin@example.com" \
   -e "ADMIN_PASSWORD=password" \
   -v doccano-db:/data \
-  --executor docker \
   --privileged \
   --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
   -p 80:8000 doccano/doccano
