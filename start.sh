@@ -7,8 +7,12 @@ yum install -y python-pip
 #yum install -y yarn
 yum install -y sudo
 #curl --silent --location https://rpm.nodesource.com/setup_12.x | bash -
-yum install https://rpm.nodesource.com/pub_21.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
-yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
+#yum install https://rpm.nodesource.com/pub_21.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
+#yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
+curl -fsSL https://rpm.nodesource.com/setup_22.x -o nodesource_setup.sh
+chmod +x nodesource_setup.sh
+bash nodesource_setup.sh
+yum install -y nodejs
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
 
 python -m pip install --user pipx
