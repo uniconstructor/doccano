@@ -6,7 +6,7 @@ yum install -y python
 yum install -y python-pip
 python -m pip install --user pipx
 python -m pipx ensurepath
-pipx ensurepath --global
+python -m pipx ensurepath --global
 
 # Install Docker
 #yum install -y docker
@@ -19,7 +19,7 @@ pipx ensurepath --global
 #ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # Install poetry
-pipx install poetry
+python -m pipx install poetry
 #export POETRY_HOME=/opt/poetry
 #python3 -m venv $POETRY_HOME
 #$POETRY_HOME/bin/pip install poetry==1.2.0
