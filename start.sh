@@ -17,7 +17,7 @@ curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.rep
 
 python -m pip install --user pipx
 python -m pipx ensurepath
-pipx ensurepath --global
+python -m pipx ensurepath --global
 
 # Install Docker
 #yum install -y docker
@@ -30,7 +30,7 @@ pipx ensurepath --global
 #ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # Install poetry
-pipx install poetry
+python -m pip install poetry
 #export POETRY_HOME=/opt/poetry
 #python3 -m venv $POETRY_HOME
 #$POETRY_HOME/bin/pip install poetry==1.2.0
@@ -46,8 +46,8 @@ cd doccano
 #docker-compose -f docker/docker-compose.prod.yml up -d
 
 cd backend
-pipx run poetry install
-pipx run poetry shell
+python -m poetry install
+python -m poetry shell
 python manage.py migrate
 python manage.py create_roles
 python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
