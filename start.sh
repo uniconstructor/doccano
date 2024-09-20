@@ -20,6 +20,11 @@ python -m pip install --user pipx
 python -m pipx ensurepath
 python -m pipx ensurepath --global
 
+mkdir -p /backend/staticfiles \
+  && mkdir -p /backend/client/dist/static \
+  && mkdir -p /backend/media \
+  && mkdir -p /backend/filepond-temp-uploads
+
 # Install Docker
 #yum install -y docker
 #systemctl enable docker
@@ -50,6 +55,15 @@ cd backend
 python -m poetry install
 #python -m poetry shell
 source $(python -m poetry env info --path)/bin/activate
+
+echo "Making staticfiles"
+static_dir=staticfiles
+mkdir -p client/dist/static
+if [[ ! -d $static_dir ]] || [[ -z $(ls -A $static_dir) ]]; then
+  echo "Executing collectstatic"
+  python manage.py collectstatic --noinput;
+fi
+
 python manage.py migrate
 python manage.py create_roles
 python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
@@ -58,5 +72,6 @@ python manage.py runserver & disown
 cd ..
 cd frontend
 yarn install
+yarn build
 yarn start & disown
 
