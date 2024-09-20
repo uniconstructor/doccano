@@ -4,8 +4,9 @@ yum update -y
 yum install -y git
 yum install -y python3
 yum install -y python3-pip
-yum install -y python3-pipx
-pipx ensurepath
+python -m pip install --user pipx
+python -m pipx ensurepath
+pipx ensurepath --global
 
 # Install Docker
 #yum install -y docker
