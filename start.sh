@@ -26,15 +26,14 @@ pipx install poetry
 #ln -s /usr/local/bin/poetry /usr/bin/poetry
 
 # clone doccano
-#git clone https://github.com/doccano/doccano.git
-#cd doccano
+git clone https://github.com/doccano/doccano.git
+cd doccano
 #cp docker/.env.example .env
 #docker-compose -f docker/docker-compose.prod.yml up -d
 
 cd backend
 poetry install
 poetry shell
-
 python manage.py migrate
 python manage.py create_roles
 python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
