@@ -1,5 +1,5 @@
 #!/bin/bash -ex
-apt install -y git
+#apt install -y git
 #docker build -t doccano:latest . -f docker/Dockerfile
 git clone https://github.com/doccano/doccano.git
 cd doccano
