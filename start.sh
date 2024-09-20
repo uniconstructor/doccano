@@ -3,6 +3,7 @@ yum update -y
 # Install git
 yum install -y git
 yum install -y python
+yum install -y pipx
 
 # Install Docker
 #yum install -y docker
@@ -15,9 +16,14 @@ yum install -y python
 #ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # Install poetry
-curl -L "https://install.python-poetry.org" -o /usr/local/bin/poetry
-chmod +x /usr/local/bin/poetry
-ln -s /usr/local/bin/poetry /usr/bin/poetry
+pipx install poetry
+#export POETRY_HOME=/opt/poetry
+#python3 -m venv $POETRY_HOME
+#$POETRY_HOME/bin/pip install poetry==1.2.0
+#$POETRY_HOME/bin/poetry --version
+#curl -sSL https://install.python-poetry.org | python3 -
+#chmod +x /usr/local/bin/poetry
+#ln -s /usr/local/bin/poetry /usr/bin/poetry
 
 # clone doccano
 #git clone https://github.com/doccano/doccano.git
