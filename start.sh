@@ -6,6 +6,7 @@ yum install -y python3
 yum install -y python3-pip
 pip3 –V
 yum install -y python3-pipx
+pipx ensurepath
 
 # Install Docker
 #yum install -y docker
