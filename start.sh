@@ -14,6 +14,7 @@ chmod +x nodesource_setup.sh
 bash nodesource_setup.sh
 yum install -y nodejs
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+yum install -y yarn
 
 python -m pip install --user pipx
 python -m pipx ensurepath
