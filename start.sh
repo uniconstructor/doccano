@@ -2,8 +2,10 @@
 yum update -y
 # Install git
 yum install -y git
-yum install -y python
-yum install -y pipx
+yum install -y python3
+yum install -y python3-pip
+pip3 –V
+yum install -y python3-pipx
 
 # Install Docker
 #yum install -y docker
