@@ -4,7 +4,6 @@ yum update -y
 yum install -y git
 yum install -y python3
 yum install -y python3-pip
-pip3 –V
 yum install -y python3-pipx
 pipx ensurepath
 
