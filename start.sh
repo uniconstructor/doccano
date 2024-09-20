@@ -4,9 +4,10 @@ yum update -y
 yum install -y git
 yum install -y python
 yum install -y python-pip
+yum install -y yarn
 python -m pip install --user pipx
 python -m pipx ensurepath
-python -m pipx ensurepath --global
+pipx ensurepath --global
 
 # Install Docker
 #yum install -y docker
@@ -19,7 +20,7 @@ python -m pipx ensurepath --global
 #ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # Install poetry
-python -m pipx install poetry
+pipx install poetry
 #export POETRY_HOME=/opt/poetry
 #python3 -m venv $POETRY_HOME
 #$POETRY_HOME/bin/pip install poetry==1.2.0
@@ -35,14 +36,13 @@ cd doccano
 #docker-compose -f docker/docker-compose.prod.yml up -d
 
 cd backend
-poetry install
-poetry shell
+pipx run poetry install
+pipx run poetry shell
 python manage.py migrate
 python manage.py create_roles
 python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
 python manage.py runserver & disown
 
-yum install -y yarn
 cd ..
 cd frontend
 yarn install
