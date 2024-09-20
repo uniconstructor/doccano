@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash -ex
+yum update -y
+# Install Docker
+yum install -y docker
 systemctl enable docker
 service docker start
 # Install docker compose
