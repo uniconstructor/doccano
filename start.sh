@@ -47,7 +47,8 @@ cd doccano
 
 cd backend
 python -m poetry install
-python -m poetry shell
+#python -m poetry shell
+source $(python -m poetry env info --path)/bin/activate
 python manage.py migrate
 python manage.py create_roles
 python manage.py create_admin --noinput --username "admin" --email "admin@example.com" --password "password"
