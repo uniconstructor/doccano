@@ -5,8 +5,8 @@ yum install -y git
 yum install -y python
 yum install -y python-pip
 #yum install -y yarn
-curl --silent --location https://rpm.nodesource.com/setup_12.x | sudo bash -
-curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+curl --silent --location https://rpm.nodesource.com/setup_12.x | bash -
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
 
 python -m pip install --user pipx
 python -m pipx ensurepath
