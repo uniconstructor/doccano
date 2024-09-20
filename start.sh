@@ -58,5 +58,5 @@ python manage.py runserver & disown
 cd ..
 cd frontend
 yarn install
-yarn start
+yarn start & disown
 
