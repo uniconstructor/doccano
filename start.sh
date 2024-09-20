@@ -2,8 +2,8 @@
 yum update -y
 # Install git
 yum install -y git
-yum install -y python3
-yum install -y python3-pip
+yum install -y python
+yum install -y python-pip
 python -m pip install --user pipx
 python -m pipx ensurepath
 pipx ensurepath --global
