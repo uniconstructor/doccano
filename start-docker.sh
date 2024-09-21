@@ -10,6 +10,7 @@ apt-get install -y apt-utils
 apt-get install -y dbus-user-session
 apt-get install -y uidmap
 apt-get install -y systemd-container
+apt-get install -y install sudo
 
 #curl -fsSL https://get.docker.com -o get-docker.sh
 #chmod +x get-docker.sh
@@ -24,7 +25,7 @@ chmod a+r /etc/apt/keyrings/docker.asc
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
 
 #curl -fsSL https://get.docker.com/rootless | sh
@@ -39,10 +40,9 @@ service docker start
 service docker status
 #dockerd
 
-#curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-#chmod +x /usr/local/bin/docker-compose
-#ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-
+curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 cd docker
 #curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o docker-compose
