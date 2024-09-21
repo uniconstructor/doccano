@@ -15,6 +15,22 @@ apt-get install -y docker-ce-rootless-extras
 #chmod +x get-docker.sh
 #sh get-docker.sh
 curl -fsSL https://get.docker.com/rootless | sh
+
+filename=$(echo $HOME/bin/rootlesskit | sed -e s@^/@@ -e s@/@.@g)
+cat <<EOF > ~/${filename}
+abi <abi/4.0>,
+include <tunables/global>
+
+"$HOME/bin/rootlesskit" flags=(unconfined) {
+  userns,
+
+  include if exists <local/${filename}>
+}
+EOF
+
+mv ~/${filename} /etc/apparmor.d/${filename}
+systemctl restart apparmor.service
+
 export PATH=/home/$USER/bin:$PATH
 export DOCKER_HOST=unix:///run/$USER/1000/docker.sock
 #service docker status
