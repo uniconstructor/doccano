@@ -32,18 +32,21 @@ apt-get install -y docker
 #docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin docker-ce-rootless-extras
 apt-get install -y docker-compose
 apt-get install -y docker-compose-plugin
-curl -fsSL https://get.docker.com/rootless | sh
+apt-get install -y docker.io
+apt-get install -y rootlesskit
+#curl -fsSL https://get.docker.com/rootless | sh
 #dockerd-rootless-setuptool.sh install
 #export PATH=/home/$USER/bin:$PATH
 #export DOCKER_HOST=unix:///run/$USER/1000/docker.sock
-service docker status
-service docker start
-service docker status
+#service docker status
+dockerd
+service dockerd start
+service dockerd status
 #dockerd
 
-curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+#curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+#chmod +x /usr/local/bin/docker-compose
+#ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 cd docker
 #curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o docker-compose
