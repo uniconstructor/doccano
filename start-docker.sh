@@ -10,16 +10,32 @@ apt-get install -y apt-utils
 apt-get install -y dbus-user-session
 apt-get install -y uidmap
 apt-get install -y systemd-container
-#apt-get install -y docker-ce-rootless-extras
-curl -fsSL https://get.docker.com -o get-docker.sh
-chmod +x get-docker.sh
-sh get-docker.sh
+
+#curl -fsSL https://get.docker.com -o get-docker.sh
+#chmod +x get-docker.sh
+#sh get-docker.sh
+# Add Docker's official GPG key:
+apt-get install ca-certificates curl
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt-get update
+
 #curl -fsSL https://get.docker.com/rootless | sh
-apt-get install -y docker-ce-rootless-extras
-export PATH=/home/$USER/bin:$PATH
+apt-get install -y apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+dockerd-rootless-setuptool.sh install
+#export PATH=/home/$USER/bin:$PATH
 #export DOCKER_HOST=unix:///run/$USER/1000/docker.sock
 service docker status
-dockerd
+service docker start
+service docker status
+#dockerd
 
 #curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 #chmod +x /usr/local/bin/docker-compose
