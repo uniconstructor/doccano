@@ -4,7 +4,9 @@
 #git clone https://github.com/doccano/doccano.git
 #cd doccano
 apt-get update
-apt-get -y install curl
+apt-get install -y ca-certificates 
+apt-get install -y curl 
+apt-get install -y apt-utils
 curl -fsSL https://get.docker.com -o get-docker.sh
 chmod +x get-docker.sh
 sh get-docker.sh
@@ -15,10 +17,14 @@ sh get-docker.sh
 
 
 cd docker
+curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o docker-compose
+chmod +x docker-compose
+cp ./docker-compose /usr/bin/docker-compose
+cp ./docker-compose /usr/local/bin/docker-compose
 cp .env.example .env
 #docker run -v /var/run/docker.sock:/var/run/docker.sock docker:latest
 #docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docker:latest version
-docker-compose -f docker-compose.prod.yml --env-file .env up
+./docker-compose -f docker-compose.prod.yml --env-file .env up
 #docker pull doccano/doccano
 #docker container create --name doccano \
 #  -e "ADMIN_USERNAME=admin" \
