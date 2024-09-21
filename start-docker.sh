@@ -28,12 +28,12 @@ echo \
   tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
 
-#curl -fsSL https://get.docker.com/rootless | sh
 apt-get install -y docker 
 #docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin docker-ce-rootless-extras
 apt-get install -y docker-compose
 apt-get install -y docker-compose-plugin
-dockerd-rootless-setuptool.sh install
+curl -fsSL https://get.docker.com/rootless | sh
+#dockerd-rootless-setuptool.sh install
 #export PATH=/home/$USER/bin:$PATH
 #export DOCKER_HOST=unix:///run/$USER/1000/docker.sock
 service docker status
