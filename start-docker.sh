@@ -14,9 +14,10 @@ apt-get install -y systemd-container
 curl -fsSL https://get.docker.com -o get-docker.sh
 chmod +x get-docker.sh
 sh get-docker.sh
-curl -fsSL https://get.docker.com/rootless | sh
+#curl -fsSL https://get.docker.com/rootless | sh
+apt-get install -y docker-ce-rootless-extras
 export PATH=/home/$USER/bin:$PATH
-export DOCKER_HOST=unix:///run/$USER/1000/docker.sock
+#export DOCKER_HOST=unix:///run/$USER/1000/docker.sock
 service docker status
 dockerd
 
