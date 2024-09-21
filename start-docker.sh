@@ -3,6 +3,10 @@
 #docker build -t doccano:latest . -f docker/Dockerfile
 #git clone https://github.com/doccano/doccano.git
 #cd doccano
+apt install -y docker
+curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 cd docker
 cp .env.example .env
 #docker run -v /var/run/docker.sock:/var/run/docker.sock docker:latest
