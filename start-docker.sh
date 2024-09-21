@@ -10,6 +10,8 @@ apt-get install -y apt-utils
 curl -fsSL https://get.docker.com -o get-docker.sh
 chmod +x get-docker.sh
 sh get-docker.sh
+service docker status
+dockerd
 
 #curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 #chmod +x /usr/local/bin/docker-compose
@@ -17,10 +19,10 @@ sh get-docker.sh
 
 
 cd docker
-curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o docker-compose
-chmod +x docker-compose
-cp ./docker-compose /usr/bin/docker-compose
-cp ./docker-compose /usr/local/bin/docker-compose
+#curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o docker-compose
+#chmod +x docker-compose
+#cp ./docker-compose /usr/bin/docker-compose
+#cp ./docker-compose /usr/local/bin/docker-compose
 cp .env.example .env
 #docker run -v /var/run/docker.sock:/var/run/docker.sock docker:latest
 #docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docker:latest version
