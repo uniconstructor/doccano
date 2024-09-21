@@ -50,7 +50,7 @@ cd docker
 cp .env.example .env
 #docker run -v /var/run/docker.sock:/var/run/docker.sock docker:latest
 #docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docker:latest version
-./docker-compose -f docker-compose.prod.yml --env-file .env up
+docker-compose -f docker-compose.prod.yml --env-file .env up
 #docker pull doccano/doccano
 #docker container create --name doccano \
 #  -e "ADMIN_USERNAME=admin" \
