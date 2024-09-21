@@ -4,6 +4,7 @@
 #git clone https://github.com/doccano/doccano.git
 #cd doccano
 apt-get update
+apt-get -y install curl
 curl -fsSL https://get.docker.com -o get-docker.sh
 chmod +x get-docker.sh
 sh get-docker.sh
