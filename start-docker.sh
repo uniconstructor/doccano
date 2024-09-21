@@ -7,11 +7,18 @@ apt-get update
 apt-get install -y ca-certificates 
 apt-get install -y curl 
 apt-get install -y apt-utils
-curl -fsSL https://get.docker.com -o get-docker.sh
-chmod +x get-docker.sh
-sh get-docker.sh
-service docker status
-dockerd
+apt-get install -y dbus-user-session
+apt-get install -y uidmap
+apt-get install -y systemd-container
+apt-get install -y docker-ce-rootless-extras
+#curl -fsSL https://get.docker.com -o get-docker.sh
+#chmod +x get-docker.sh
+#sh get-docker.sh
+curl -fsSL https://get.docker.com/rootless | sh
+export PATH=/home/$USER/bin:$PATH
+export DOCKER_HOST=unix:///run/$USER/1000/docker.sock
+#service docker status
+#dockerd
 
 #curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 #chmod +x /usr/local/bin/docker-compose
