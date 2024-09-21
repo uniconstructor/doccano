@@ -7,9 +7,10 @@ yum install -y python-pip
 python -m pip install --user pipx
 python -m pipx ensurepath
 python -m pipx ensurepath --global
-python -m pip install doccano 
+python -m pipx install setuptools 
+python -m pipx install doccano 
 
-python -m doccano init
-python -m doccano createuser --username admin --password password
-python -m doccano webserver --port 80 & disown
-python -m doccano task & disown
+python -m pipx run doccano init
+python -m pipx run doccano createuser --username admin --password password
+python -m pipx run doccano webserver --port 80 & disown
+python -m pipx run doccano task & disown
